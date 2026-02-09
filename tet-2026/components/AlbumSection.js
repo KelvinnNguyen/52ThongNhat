@@ -1,3 +1,5 @@
+let photoModalController = null;
+
 export function createAlbumSection(content) {
   const section = document.createElement("section");
   section.className = "section-card memories-section";
@@ -25,10 +27,6 @@ export function createAlbumSection(content) {
 
   const yearStage = document.createElement("div");
   yearStage.className = "memory-year-stage";
-  const lightbox = createMemoriesLightbox(reduceMotionQuery);
-  if (document.body) {
-    document.body.append(lightbox.element);
-  }
 
   function setActiveYear(year) {
     activeYear = year;
@@ -55,7 +53,7 @@ export function createAlbumSection(content) {
   }
 
   function commitActiveYearRender(yearData) {
-    const nextBlock = createYearSection(yearData, lightbox.open);
+    const nextBlock = createYearSection(yearData);
     yearStage.replaceChildren(nextBlock);
     window.requestAnimationFrame(() => {
       nextBlock.classList.add("is-visible");
@@ -142,7 +140,7 @@ function createYearChip(label) {
   return chip;
 }
 
-function createYearSection(yearEntry, openLightbox) {
+function createYearSection(yearEntry) {
   const block = document.createElement("article");
   block.className = "memory-year-block";
   block.dataset.year = yearEntry.year;
@@ -186,7 +184,7 @@ function createYearSection(yearEntry, openLightbox) {
     const { card, trigger } = cardState;
 
     trigger.addEventListener("click", () => {
-      openLightbox(photo);
+      openPhotoModal(photo.src, photo.alt);
     });
 
     const delay = Math.min(photoIndex * 70, 280);
@@ -218,7 +216,21 @@ function createPhotoCard(photo) {
   return { card: figure, trigger };
 }
 
-function createMemoriesLightbox(reduceMotionQuery) {
+function openPhotoModal(src, alt) {
+  const source = String(src ?? "").trim();
+  if (!source) {
+    return;
+  }
+
+  if (!photoModalController) {
+    photoModalController = createPhotoModalController();
+  }
+
+  photoModalController.open(source, alt);
+}
+
+function createPhotoModalController() {
+  const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
   const overlay = document.createElement("div");
   overlay.className = "memory-lightbox";
   overlay.setAttribute("role", "dialog");
@@ -264,11 +276,23 @@ function createMemoriesLightbox(reduceMotionQuery) {
   meta.append(caption, actions, hint);
   panel.append(closeButton, image, meta);
   overlay.append(panel);
+  if (document.body) {
+    document.body.append(overlay);
+  }
 
   let isOpen = false;
+  let lastFocusedElement = null;
   let previousBodyOverflow = "";
   let previousBodyPaddingRight = "";
   let isBodyScrollLocked = false;
+
+  function ensureOverlayAttached() {
+    if (overlay.isConnected || !document.body) {
+      return;
+    }
+
+    document.body.append(overlay);
+  }
 
   function lockBodyScroll() {
     if (isBodyScrollLocked) {
@@ -310,15 +334,19 @@ function createMemoriesLightbox(reduceMotionQuery) {
     overlay.classList.remove("is-open");
     overlay.setAttribute("aria-hidden", "true");
     unlockBodyScroll();
+
+    if (lastFocusedElement instanceof HTMLElement) {
+      window.requestAnimationFrame(() => {
+        lastFocusedElement.focus();
+      });
+    }
   }
 
-  function open(photo) {
-    const source = String(photo?.src ?? "").trim();
-    if (!source) {
-      return;
-    }
+  function open(source, altText) {
+    ensureOverlayAttached();
+    lastFocusedElement = document.activeElement;
 
-    const alt = String(photo?.alt ?? "").trim() || "Family photo";
+    const alt = String(altText ?? "").trim() || "Family photo";
     image.src = source;
     image.alt = alt;
     caption.textContent = alt;
@@ -358,7 +386,7 @@ function createMemoriesLightbox(reduceMotionQuery) {
     close();
   });
 
-  return { element: overlay, open, close };
+  return { open, close };
 }
 
 function getDefaultYear(yearEntries) {

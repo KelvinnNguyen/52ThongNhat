@@ -1352,8 +1352,8 @@ export const tet2026Content = {
   closing: {
     title: "Final Wish",
     paragraph:
-      "As we welcome this new year, I hope our family continues to walk together with gentle hearts, patient words, and unwavering love. No matter where life takes us, may we always return to one another with gratitude.",
-    signature: "With love, Nguyễn Bảo Khang — 2026",
+      "As we welcome Tet 2026, I wish our family a year filled with peace, good health, and gentle happiness in every home. May our days be warm with laughter, our meals shared with joy, and our hearts always close no matter how busy life becomes. I hope this new year brings steady steps forward, calm minds, and many small moments that turn into beautiful memories together. Wherever the journey takes each of us, may we always find our way back to one another with gratitude, love, and the comforting feeling of being home.",
+    signature: "",
   },
   authorSignature: {
     author: "Author: Nguyễn Bảo Khang",

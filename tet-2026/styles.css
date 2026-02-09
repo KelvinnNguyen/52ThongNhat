@@ -1414,11 +1414,15 @@ body.memory-lightbox-open {
 
 .memory-lightbox {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   z-index: 9999;
   padding: clamp(0.95rem, 2.2vw, 1.5rem);
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: rgba(25, 12, 10, 0.62);
   backdrop-filter: blur(3px);
   -webkit-backdrop-filter: blur(3px);
@@ -1601,7 +1605,11 @@ body.memory-lightbox-open {
 
 .closing-paragraph {
   color: #4b3b2d;
-  max-width: 74ch;
+  width: 100%;
+  max-width: none;
+  line-height: 1.8;
+  text-align: justify;
+  text-align-last: left;
 }
 
 .closing-signature {

@@ -29,6 +29,8 @@ export function createLiXiSection(content) {
 
   let activeEnvelopeId = null;
   const envelopeRegistry = new Map();
+  const envelopeByCard = new Map();
+  const envelopeCards = [];
   const prefersReducedMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
 
   function setActiveEnvelope(nextId) {
@@ -40,13 +42,7 @@ export function createLiXiSection(content) {
     setActiveEnvelope(null);
   }
 
-  function scrollEnvelopeIntoView(id) {
-    const target = envelopeRegistry.get(id);
-    if (!target) {
-      return;
-    }
-
-    const { card } = target;
+  function scrollEnvelopeIntoView(card) {
     const viewportHeight = window.innerHeight || 0;
     const rect = card.getBoundingClientRect();
     const isOutOfView = rect.top < 0 || rect.bottom > viewportHeight;
@@ -60,51 +56,66 @@ export function createLiXiSection(content) {
     }
   }
 
-  function openEnvelope(id, options = {}) {
-    const { triggerEffects = true, scrollIntoView = false } = options;
-    setActiveEnvelope(id);
-
-    if (scrollIntoView) {
-      scrollEnvelopeIntoView(id);
-    }
-
-    if (triggerEffects) {
-      playFireworkBurst(id);
-    }
-  }
-
-  function openRandomEnvelope() {
-    const ids = content.members.map((member) => member.id);
-    if (ids.length === 0) {
-      return;
-    }
-
-    const candidates = ids.filter((id) => id !== activeEnvelopeId);
-    const pool = candidates.length > 0 ? candidates : ids;
-    const randomId = pool[Math.floor(Math.random() * pool.length)];
-    openEnvelope(randomId, { triggerEffects: true, scrollIntoView: true });
-  }
-
-  function handleEnvelopeTrigger(id) {
-    if (activeEnvelopeId === id) {
-      closeEnvelope();
-      return;
-    }
-
-    openEnvelope(id, { triggerEffects: true });
-  }
-
-  function playFireworkBurst(id) {
-    if (prefersReducedMotionQuery.matches) {
-      return;
-    }
-
-    const target = envelopeRegistry.get(id);
+  function openEnvelope(card, options = {}) {
+    const { withEffects = true, scrollIntoView = false } = options;
+    const target = envelopeByCard.get(card);
     if (!target) {
       return;
     }
 
-    const { card } = target;
+    setActiveEnvelope(target.id);
+
+    if (scrollIntoView) {
+      scrollEnvelopeIntoView(card);
+    }
+
+    if (withEffects) {
+      if (scrollIntoView && !prefersReducedMotionQuery.matches) {
+        window.requestAnimationFrame(() => {
+          window.requestAnimationFrame(() => {
+            playFireworkBurst(card);
+          });
+        });
+      } else {
+        playFireworkBurst(card);
+      }
+    }
+  }
+
+  function openRandomEnvelope() {
+    if (envelopeCards.length === 0) {
+      return;
+    }
+
+    const candidates = envelopeCards.filter((card) => {
+      const envelope = envelopeByCard.get(card);
+      return envelope && envelope.id !== activeEnvelopeId;
+    });
+
+    const pool = candidates.length > 0 ? candidates : envelopeCards;
+    const randomCard = pool[Math.floor(Math.random() * pool.length)];
+    openEnvelope(randomCard, { withEffects: true, scrollIntoView: true });
+  }
+
+  function handleEnvelopeTrigger(card) {
+    const target = envelopeByCard.get(card);
+    if (!target) {
+      return;
+    }
+
+    if (activeEnvelopeId === target.id) {
+      closeEnvelope();
+      return;
+    }
+
+    openEnvelope(card, { withEffects: true });
+  }
+
+  function playFireworkBurst(card) {
+    if (prefersReducedMotionQuery.matches) {
+      return;
+    }
+
     const existingBurst = card.querySelector(".lixi-firework");
     if (existingBurst) {
       existingBurst.remove();
@@ -201,7 +212,7 @@ export function createLiXiSection(content) {
     closeButton.disabled = true;
     closeButton.tabIndex = -1;
 
-    trigger.addEventListener("click", () => handleEnvelopeTrigger(member.id));
+    trigger.addEventListener("click", () => handleEnvelopeTrigger(card));
     closeButton.addEventListener("click", closeEnvelope);
 
     wishBody.append(wish);
@@ -210,11 +221,20 @@ export function createLiXiSection(content) {
     grid.append(card);
 
     envelopeRegistry.set(member.id, {
+      id: member.id,
       card,
       trigger,
       panel,
       closeButton,
     });
+    envelopeByCard.set(card, {
+      id: member.id,
+      card,
+      trigger,
+      panel,
+      closeButton,
+    });
+    envelopeCards.push(card);
   });
 
   randomButton.addEventListener("click", openRandomEnvelope);
