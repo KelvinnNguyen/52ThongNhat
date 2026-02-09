@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 320" role="img" aria-labelledby="title desc">
+  <title id="title">Cute decorative horse accent</title>
+  <desc id="desc">A subtle cartoon-style horse used as a corner background decoration.</desc>
+  <defs>
+    <radialGradient id="halo" cx="0.5" cy="0.45" r="0.58">
+      <stop offset="0%" stop-color="#f8e1b3" stop-opacity="0.56"/>
+      <stop offset="100%" stop-color="#f8e1b3" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="face" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f5dfb8"/>
+      <stop offset="100%" stop-color="#eac58d"/>
+    </linearGradient>
+    <linearGradient id="mane" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c84f3c"/>
+      <stop offset="100%" stop-color="#9d3227"/>
+    </linearGradient>
+  </defs>
+
+  <circle cx="160" cy="160" r="142" fill="url(#halo)"/>
+  <ellipse cx="158" cy="188" rx="76" ry="84" fill="url(#face)"/>
+
+  <path d="M106 138 C96 106 110 80 138 68 C130 98 136 124 154 136 Z" fill="url(#face)"/>
+  <path d="M210 138 C218 106 204 80 176 68 C186 98 182 124 164 136 Z" fill="url(#face)"/>
+
+  <path d="M88 170 C86 126 124 90 178 96 C222 102 244 136 246 176 C230 154 212 144 188 146 C168 146 150 152 132 168 C116 182 100 182 88 170 Z" fill="url(#mane)" opacity="0.9"/>
+
+  <ellipse cx="132" cy="188" rx="8" ry="10" fill="#6e3928"/>
+  <ellipse cx="184" cy="188" rx="8" ry="10" fill="#6e3928"/>
+  <circle cx="129" cy="184" r="2" fill="#fff2dc"/>
+  <circle cx="181" cy="184" r="2" fill="#fff2dc"/>
+
+  <ellipse cx="158" cy="218" rx="26" ry="18" fill="#f0d5a8"/>
+  <ellipse cx="148" cy="216" rx="4" ry="6" fill="#88513a"/>
+  <ellipse cx="168" cy="216" rx="4" ry="6" fill="#88513a"/>
+
+  <path d="M140 238 C146 248 170 248 176 238" fill="none" stroke="#9a3c2f" stroke-width="4" stroke-linecap="round"/>
+
+  <g fill="#d7a655" opacity="0.72">
+    <circle cx="56" cy="88" r="8"/>
+    <circle cx="72" cy="96" r="6"/>
+    <circle cx="46" cy="104" r="5"/>
+    <circle cx="266" cy="98" r="7"/>
+    <circle cx="252" cy="110" r="5"/>
+    <circle cx="276" cy="116" r="4"/>
+  </g>
+</svg>

@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1280" role="img" aria-labelledby="title desc">
+  <title id="title">Festive Tet horse background</title>
+  <desc id="desc">Soft artistic Lunar New Year background with warm tones and subtle horse-themed details.</desc>
+  <defs>
+    <linearGradient id="base" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f8f1e3"/>
+      <stop offset="44%" stop-color="#f6ebdb"/>
+      <stop offset="100%" stop-color="#f3e2cd"/>
+    </linearGradient>
+    <radialGradient id="glowTop" cx="0.18" cy="0.1" r="0.56">
+      <stop offset="0%" stop-color="#fff7eb" stop-opacity="0.92"/>
+      <stop offset="100%" stop-color="#fff7eb" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowBottom" cx="0.86" cy="0.86" r="0.52">
+      <stop offset="0%" stop-color="#fff3de" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#fff3de" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="wash" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b02f2d" stop-opacity="0.16"/>
+      <stop offset="100%" stop-color="#b02f2d" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="hill" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#e5c38d" stop-opacity="0.26"/>
+      <stop offset="100%" stop-color="#b2783b" stop-opacity="0.16"/>
+    </linearGradient>
+    <linearGradient id="horseFill" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f0d6a2" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#bf7e3d" stop-opacity="0.13"/>
+    </linearGradient>
+    <linearGradient id="horseStroke" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#be843f" stop-opacity="0.45"/>
+      <stop offset="100%" stop-color="#8d3b2c" stop-opacity="0.32"/>
+    </linearGradient>
+    <pattern id="paper" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="6" cy="6" r="1" fill="#c08745" opacity="0.07"/>
+      <circle cx="20" cy="14" r="1" fill="#8f342a" opacity="0.055"/>
+      <circle cx="12" cy="22" r="1" fill="#d4ae74" opacity="0.07"/>
+    </pattern>
+  </defs>
+
+  <rect width="1920" height="1280" fill="url(#base)"/>
+  <rect width="1920" height="1280" fill="url(#paper)" opacity="0.55"/>
+  <rect width="1920" height="1280" fill="url(#glowTop)"/>
+  <rect width="1920" height="1280" fill="url(#glowBottom)"/>
+
+  <circle cx="256" cy="178" r="168" fill="#f5cf8f" opacity="0.16"/>
+  <circle cx="1638" cy="206" r="126" fill="#ba3b33" opacity="0.11"/>
+  <circle cx="1496" cy="920" r="246" fill="#d8b06a" opacity="0.11"/>
+
+  <path d="M0 1002 C356 914 690 1018 1078 952 C1410 894 1676 958 1920 920 L1920 1280 L0 1280 Z" fill="url(#hill)"/>
+  <path d="M0 1060 C366 980 764 1066 1138 1012 C1458 966 1732 1026 1920 1004 L1920 1280 L0 1280 Z" fill="#b37a3f" opacity="0.09"/>
+
+  <path d="M656 760
+           C702 694 784 650 866 636
+           C942 624 1008 646 1048 670
+           C1096 699 1126 724 1158 716
+           C1188 708 1204 654 1248 632
+           C1288 612 1342 618 1374 648
+           C1412 684 1414 730 1384 770
+           C1358 806 1308 830 1260 842
+           C1218 852 1196 888 1174 926
+           C1140 986 1112 1034 1066 1040
+           C1014 1046 1006 976 986 932
+           C968 892 940 876 900 878
+           C852 880 818 912 780 956
+           C746 996 690 1012 644 986
+           C598 958 566 900 556 850
+           C548 814 618 802 656 760 Z"
+        fill="url(#horseFill)"/>
+
+  <path d="M676 762
+           C726 700 798 666 872 654
+           C944 642 1002 660 1040 684
+           C1084 712 1118 742 1162 738
+           C1198 734 1210 674 1248 656
+           C1284 638 1336 642 1364 674
+           C1392 706 1388 746 1360 776
+           C1330 810 1282 830 1240 842
+           C1204 852 1188 884 1164 930
+           C1136 986 1114 1026 1078 1028
+           C1038 1030 1022 980 1008 940
+           C994 900 964 874 908 876
+           C852 878 812 908 770 958
+           C742 988 694 996 656 972
+           C612 942 592 900 584 850
+           C580 822 640 810 676 762"
+        fill="none"
+        stroke="url(#horseStroke)"
+        stroke-width="8"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        opacity="0.72"/>
+
+  <path d="M1268 652 C1300 624 1348 618 1374 634 C1398 648 1404 680 1392 704" fill="none" stroke="#9a3b31" stroke-width="5" stroke-linecap="round" opacity="0.32"/>
+
+  <g opacity="0.28">
+    <path d="M1588 292 C1602 278 1624 276 1640 286 C1656 296 1662 318 1654 336" fill="none" stroke="#b65541" stroke-width="5" stroke-linecap="round"/>
+    <path d="M1614 304 C1626 294 1644 294 1654 302 C1666 312 1668 328 1660 340" fill="none" stroke="#c78446" stroke-width="4" stroke-linecap="round"/>
+  </g>
+
+  <rect width="1920" height="1280" fill="url(#wash)"/>
+</svg>

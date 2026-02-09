@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" role="img" aria-labelledby="title desc">
+  <title id="title">Album placeholder image</title>
+  <desc id="desc">Placeholder frame for family album photos</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7e9d0"/>
+      <stop offset="100%" stop-color="#fffaf1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="900" fill="url(#bg)"/>
+  <rect x="150" y="120" width="900" height="660" rx="36" fill="#fffdf8" stroke="#d6c1a0" stroke-width="4"/>
+  <circle cx="320" cy="300" r="56" fill="#c79d45" opacity="0.35"/>
+  <path d="M300 640 L490 430 L625 560 L760 470 L910 640 Z" fill="#d9c7ac"/>
+  <text x="600" y="745" font-size="42" font-family="Palatino, Georgia, serif" text-anchor="middle" fill="#7c6146">TODO: Family memory photo</text>
+</svg>

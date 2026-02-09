@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Family portrait placeholder</title>
+  <desc id="desc">Placeholder background for the main family photo</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f6e7cf"/>
+      <stop offset="100%" stop-color="#fdf8ef"/>
+    </linearGradient>
+    <linearGradient id="ring" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#a92928"/>
+      <stop offset="100%" stop-color="#d36443"/>
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bg)"/>
+  <circle cx="250" cy="130" r="130" fill="#c79d45" opacity="0.18"/>
+  <circle cx="1460" cy="740" r="190" fill="#a92928" opacity="0.12"/>
+  <rect x="220" y="160" width="1160" height="580" rx="36" fill="#fffdf8" stroke="#dcc5a3" stroke-width="4"/>
+  <rect x="270" y="210" width="1060" height="480" rx="24" fill="#fef8ef" stroke="#e4d0b2" stroke-width="2" stroke-dasharray="10 8"/>
+  <circle cx="800" cy="450" r="116" fill="url(#ring)"/>
+  <text x="800" y="430" font-size="40" font-family="Palatino, Georgia, serif" text-anchor="middle" fill="#fff2d5">LUNAR NEW YEAR 2026</text>
+  <text x="800" y="488" font-size="28" font-family="Palatino, Georgia, serif" text-anchor="middle" fill="#fff2d5">TODO: Replace with your family photo</text>
+</svg>
